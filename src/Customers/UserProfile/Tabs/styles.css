@@ -1,0 +1,47 @@
+.TabbedArea {
+  padding-top: 2rem;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.Tab {
+  cursor: pointer;
+  list-style-type: none;
+}
+
+.Tab li {
+  float: left;
+  width: 17%;
+}
+
+
+.Tab a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  padding-left: 1.5rem;
+  border-bottom: 2px solid #A9649E;
+  background: #fff;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.Tab a:hover {
+  background: #f7f7f7;
+}
+
+.Tab a.active {
+  background: #A9649E;
+  color: #fff;
+}
+
+.TabPane {
+  padding: 1rem 0;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  

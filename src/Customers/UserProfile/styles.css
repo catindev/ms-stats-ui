@@ -1,0 +1,38 @@
+.bUserProfile {
+
+}
+
+.bUserProfile__title {
+    font-size: 46px;
+    font-weight: 400;    
+}
+
+.bUserProfile__subtitle {
+    font-size: 22px;
+    line-height: 1.25;
+    font-weight: 400;    
+    margin-bottom: .55rem;
+    color: #777;
+}
+
+.bUserProfile__backLink {
+    display: inline-block;
+    text-decoration: none;
+    color: #A9649E;
+    margin-bottom: .3rem;
+    padding: 2px 0;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-weight: 600;
+}
+.bUserProfile__backLink:hover {
+    border-bottom: 2px solid;
+}
+
+.bUserProfile__callsTitle {
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+    background: #faf9f7;
+    padding: .7rem .5rem !important;
+    border-radius: 3px;
+}

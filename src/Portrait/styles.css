@@ -1,0 +1,18 @@
+.innerContent {
+  padding: 1.5rem 0;
+  padding-bottom: 2rem;
+}
+
+.bPortraitLabel {
+  background: #faf9f7;
+  padding: 1rem !important;
+  border-radius: 3px;
+}
+
+.bPortraitLabel b {
+  color: rgb(153, 152, 152);
+}
+
+.percentsList {
+  margin-bottom: 3rem;
+}

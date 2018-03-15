@@ -1,0 +1,26 @@
+.leadsOfPain {
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 10px;
+}
+
+.leadsOfPain__details {
+  padding: 1rem;
+  padding-left: 3rem;
+  /*border: 1px solid;*/
+}
+
+.veryBadLead {
+  color: #FB4D3D;
+}
+
+.leadsOfPain__all {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.09), 0 6px 6px rgba(0,0,0,0.03);
+  background: #FAF9F7;
+  border-radius: 5px;
+  font-size: 135px;
+  padding: 1rem 2rem;
+  text-align: center;
+  font-weight: 700;
+}

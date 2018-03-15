@@ -1,0 +1,27 @@
+.bUsercard {
+    background-color: #FFF;
+    border-radius: 4px;
+    margin-top: 10px;    
+    border: solid #eee 1px;
+    padding: 6px 8px;
+    cursor: pointer;
+    transition: all .12s;
+}
+.bUsercard:hover {
+    transform: translateY(-2px);
+    background-color: #FAF9F7;
+    box-shadow: 5px 5px 0 #353B3F;
+}
+
+.bUsercard__header {
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    /* cursor: grab; */
+}
+
+.bUsercard__detail {
+    font-size: 12px;
+    max-width: 600px;
+    color: #939393;
+}

@@ -1,0 +1,55 @@
+.bSidebar {
+  padding: 10px 25px;
+  font-size: 16px;
+  box-sizing: border-box;
+  max-width: 350px;
+}
+
+.bMainmenu {
+  list-style: none;
+}
+
+.bMainmenu__title {
+  font-size: 20px;
+  font-weight: 500;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.bMainmenu__title:first-child {
+  padding-top: 0;
+}
+
+
+.bMainmenu__item {
+  padding-bottom: 12px;
+}
+
+.bMainmenu__item--active {
+  padding: 7px 15px;
+  color: #fff;
+  border: 0;
+  background: #A9649E;
+}
+
+.bMainmenu__item--active:hover {
+  color: #fff !important;
+  border: 0;
+  background: #A9649E;
+}
+
+.bMainmenu__item a {
+  display: block;
+  width: 90%;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.bMainmenu__item a:hover {
+  color: #B82DA2;
+}
+
+
+

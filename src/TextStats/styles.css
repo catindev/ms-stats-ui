@@ -1,0 +1,13 @@
+.textStats {
+  padding: .5rem 0;
+}
+
+.textStats__title {
+  font-size: 18px;
+  color: #9B9B9B;
+}
+
+.textStats__value {
+  font-size: 32px;
+  font-weight: bold;
+}

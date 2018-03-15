@@ -1,0 +1,38 @@
+.bPeriodRadio {
+    padding: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.bPeriodRadio__item {
+    color: #262223;
+    margin: 5px 10px;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 2px solid;
+    border-color: rgba(0,0,0, .2);
+    cursor: pointer;
+}
+
+.bPeriodRadio__item:first-of-type { margin-left: 0; }
+
+.bPeriodRadio__item:hover {
+    color: #B82DA2;
+    border-color: rgba(184,45,162,.2);
+}
+
+
+.bPeriodRadio__item--active {
+    cursor: default;
+    border-radius: 4px;
+    padding: 7px 15px;
+    margin: 0;
+    background-color: rgba(184,45,162,.65);
+    background-color: #A9649E;
+    color: #fff;
+    border: 0;
+}
+
+.bPeriodRadio__item--active:hover {
+    color: #fff;
+}

@@ -1,0 +1,26 @@
+.bCallRecord {
+  padding: .5rem 0;
+  padding-bottom: .5rem;
+}
+
+.bCallRecord__label {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.bCallRecord__audio {
+  min-width: 600px;
+  max-width: 600px;
+}
+
+.bCallRecord__missing {
+  font-size: 14px;
+  padding: 8px 10px;
+  vertical-align: middle;
+  font-weight: 400;
+  background: #FFD1C6;
+  min-width: 580px;
+  max-width: 580px;
+  border-radius: 4px;
+}

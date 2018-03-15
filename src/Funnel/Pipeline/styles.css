@@ -1,0 +1,10 @@
+.funnelChart {
+  margin: auto;
+  width: 75vw;
+  height: 25rem;
+}
+
+.funnelChart__svg {
+    height: 100%;
+    width: 100%;
+}
