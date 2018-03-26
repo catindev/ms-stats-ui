@@ -8,8 +8,6 @@ import moment from 'moment'
 
 import './styles.css'
 
-import PubSub from '../PubSub'
-const PeriodChannel = new PubSub('period');
 
 const prevMonth = moment(new Date()).subtract(1, 'months').toDate()
 
@@ -73,7 +71,7 @@ export default class Period extends React.Component {
             end: dateFormatSubmit(end)
         }
         this.props.onInterval(data)
-        PeriodChannel.publish(data)
+        // PeriodChannel.publish(data)
     }
 
     endDayClick(day, { selected }) {

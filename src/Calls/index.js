@@ -73,7 +73,7 @@ class CallsStats extends React.Component {
     setTimeout(() => this.setState({ progress }), delay)
 
     const { msid } = this.state
-    let url = `http://localhost:5002/stats/calls?token=${msid}`
+    let url = `http://papi.mindsales-crm.com/stats/calls?token=${msid}`
 
     const { start, end } = this.state.interval
     if (start) url = `${url}&start=${start}`

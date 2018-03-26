@@ -1,0 +1,24 @@
+.bFilter {
+    fontSize: 16px; 
+    display: block; 
+    paddingTop: 1rem;
+}
+
+.bFilter__link {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px 0; 
+    display: inline-block;
+    border-bottom: 2px solid rgba(169,100,158, .25);
+    color: #A9649E;
+}
+
+.bFilter__link--active {
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px 10px;
+    display: inline-block; 
+    background: #A9649E;
+    color: #fff;
+    borderRadius: 4px;
+}

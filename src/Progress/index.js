@@ -7,6 +7,7 @@ import Progress from 'react-progress'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
+import ManagersFilter from '../ManagersFilter'
 import Usercard from './Usercard'
 import Step from './Step'
 import Nodata from './Nodata'
@@ -21,10 +22,12 @@ export default class FunnelWithAllCustomers extends React.Component {
       customer: {},
       profile: [],
       progress: 0,
-      show: 'all'
+      show: 'all',
+      manager: false
     }
 
     this.clickCard = this.clickCard.bind(this)
+    this.onManager = this.onManager.bind(this)
   }
 
   componentDidMount() {
@@ -33,11 +36,17 @@ export default class FunnelWithAllCustomers extends React.Component {
     this.setState({ msid: Cookies.get('msid') }, () => this.fetchInfo())
   }
 
+  onManager({ value }) {
+    this.setState({ manager: value }, () => this.fetchInfo())
+  }
+
+
   fetchInfo() {
     this.setState({ progress: 7 })
 
-    const { msid } = this.state
+    const { msid, manager } = this.state
     let url = `http://papi.mindsales-crm.com/stats/funnel?token=${msid}`
+    if (manager) url += `&manager=${manager}`
 
     axios.get(url)
       .then(({ data: { stats } }) => {
@@ -115,7 +124,13 @@ export default class FunnelWithAllCustomers extends React.Component {
       <div className="bContent">
         <Progress style={{ boxShadow: 'none' }} percent={this.state.progress} color="#D29FCD" height="12" />
         <h1>Текущие сделки </h1>
+
+        <div style={{ 'paddingTop': '20px', 'paddingLeft': '5px', 'maxWidth': '45%' }}>
+          <ManagersFilter onChange={this.onManager} />
+        </div>
+
         <div className="innerContent">
+
           {this.drawFunnel()}
           {show !== 'all' && <UserProfile
             customer={customer}

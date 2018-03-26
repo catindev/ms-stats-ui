@@ -1,7 +1,4 @@
 import React from 'react'
-import PubSub from '../PubSub'
-
-const PeriodChannel = new PubSub('period');
 
 export default class PeriodRadio extends React.Component {
     constructor(props) {
@@ -9,8 +6,6 @@ export default class PeriodRadio extends React.Component {
         this.state = { show: 'all' }
         this.clickAll = this.clickAll.bind(this)
         this.clickPeriod = this.clickPeriod.bind(this)
-
-        PeriodChannel.subscribe((data) => console.log(data));
     }
 
     clickAll() {

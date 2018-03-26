@@ -2,6 +2,7 @@ import React from 'react'
 import './styles.css'
 import asyncComponent from '../../asyncComponent'
 import httpError from '../../httpError'
+import PeriodRadio from '../../PeriodRadio'
 
 import Progress from 'react-progress'
 import axios from 'axios'
@@ -9,10 +10,30 @@ import Cookies from 'js-cookie'
 
 import UserDetailCard from './UserDetailCard'
 
+const Period = asyncComponent(
+    () => import('../../Period').then(module => module.default),
+    { name: 'Period' },
+)
+
 class usersStatsDetails extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { stats: [], progress: 0 }
+        this.state = {
+            stats: [], progress: 0,
+            interval: {}, show: 'all',
+        }
+
+        this.onInterval = this.onInterval.bind(this)
+        this.onPeriodChange = this.onPeriodChange.bind(this)
+    }
+
+    onInterval(interval) {
+        this.setState({ interval }, () => this.fetchInfo());
+    }
+
+    onPeriodChange({ show }) {
+        this.setState({ show });
+        if (show === 'all') this.setState({ interval: {} }, () => this.fetchInfo());
     }
 
     componentDidMount() {
@@ -29,6 +50,10 @@ class usersStatsDetails extends React.Component {
 
         const { msid } = this.state
         let url = `http://papi.mindsales-crm.com/stats/users/details?token=${msid}`
+
+        const { start, end } = this.state.interval
+        if (start) url = `${url}&start=${start}`
+        if (end) url = `${url}&end=${end}`
 
         axios.get(url)
             .then(({ data: { stats } }) => {
@@ -58,7 +83,11 @@ class usersStatsDetails extends React.Component {
         return (
             <div className="bContent">
                 <Progress style={{ boxShadow: 'none' }} percent={this.state.progress} color="#D29FCD" height="12" />
-                <h1>Закрытые клиенты у менеджеров</h1>
+                <h1>
+                    Закрытые клиенты у менеджеров
+                    <PeriodRadio onChange={this.onPeriodChange} />
+                </h1>
+                {show === 'period' && <Period onInterval={this.onInterval} />}
                 <div className="innerContent">
                     {this.drawStats()}
                 </div>

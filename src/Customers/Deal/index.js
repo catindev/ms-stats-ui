@@ -13,6 +13,8 @@ import Nodata from '../Nodata'
 import UserProfile from '../UserProfile'
 
 import PeriodRadio from '../../PeriodRadio'
+import ManagersFilter from '../../ManagersFilter'
+import TrunksFilter from '../../TrunksFilter'
 
 const Period = asyncComponent(
   () => import('../../Period').then(module => module.default),
@@ -30,12 +32,16 @@ export default class Deals extends React.Component {
       progress: 0,
       show: 'all',
       interval: {},
+      manager: false,
+      trunk: false
     }
 
     this.clickCard = this.clickCard.bind(this)
 
     this.onInterval = this.onInterval.bind(this)
     this.onPeriodChange = this.onPeriodChange.bind(this)
+    this.onManager = this.onManager.bind(this)
+    this.onTrunk = this.onTrunk.bind(this)
   }
 
   componentDidMount() {
@@ -53,15 +59,23 @@ export default class Deals extends React.Component {
     this.setState({ interval }, () => this.fetchCustomers())
   }
 
+  onManager({ value }) {
+    this.setState({ manager: value }, () => this.fetchCustomers())
+  }
+
+  onTrunk({ value }) {
+    this.setState({ trunk: value }, () => this.fetchCustomers())
+  }
+
   fetchCustomers() {
     this.setState({ progress: 7 })
 
-    const { msid } = this.state
+    const { msid, manager, trunk, start, end } = this.state
     let url = `http://papi.mindsales-crm.com/stats/deal/profiles?token=${msid}`
-
-    const { start, end } = this.state.interval
-    if (start) url = `${url}&start=${start}`
-    if (end) url = `${url}&end=${end}`
+    if (manager) url += `&manager=${manager}`
+    if (trunk) url += `&trunk=${trunk}`
+    if (start) url += `&start=${start}`
+    if (end) url += `&end=${end}`
 
     axios.get(url)
       .then(({ data: { customers } }) => {
@@ -120,6 +134,15 @@ export default class Deals extends React.Component {
           <PeriodRadio onChange={this.onPeriodChange} />
         </h1>
         {show === 'period' && <Period onInterval={this.onInterval} />}
+
+        <div style={{ 'paddingTop': '20px', 'maxWidth': '45%' }}>
+          <ManagersFilter onChange={this.onManager} />
+        </div>
+
+        <div style={{ 'paddingTop': '20px', 'maxWidth': '45%' }}>
+          <TrunksFilter onChange={this.onTrunk} />
+        </div>
+
         <div className="innerContent">
           {customer === 'all' && this.drawCustomers(customers)}
           {customer !== 'all' && <UserProfile

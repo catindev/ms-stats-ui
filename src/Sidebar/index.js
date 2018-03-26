@@ -18,7 +18,7 @@ export default ({ menu }) =>
         </NavLink>
       </li>
 
-      <li className="bMainmenu__title">Эффективность менеджеров 👈</li>
+      <li className="bMainmenu__title">Эффективность менеджеров</li>
       <li className="bMainmenu__item">
         <NavLink to="/users-stats" activeClassName="bMainmenu__item--active">
           Количество клиентов
