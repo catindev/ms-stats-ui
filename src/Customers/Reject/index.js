@@ -23,7 +23,7 @@ const Period = asyncComponent(
   { name: 'Period' },
 )
 
-export default class Rejects extends React.Component {
+export default class rejectCustomers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -32,7 +32,7 @@ export default class Rejects extends React.Component {
       profile: [],
       progress: 0,
       show: 'all',
-      interval: {},
+      interval: false,
       manager: false,
       trunk: false
     }
@@ -46,7 +46,7 @@ export default class Rejects extends React.Component {
   }
 
   componentDidMount() {
-    const fromLocalStorage = localStorage.getItem('rejects')
+    const fromLocalStorage = localStorage.getItem('rejectCustomers')
     if (fromLocalStorage) this.setState(JSON.parse(fromLocalStorage))
     this.setState({ msid: Cookies.get('msid') }, () => this.fetchCustomers())
   }
@@ -71,17 +71,19 @@ export default class Rejects extends React.Component {
   fetchCustomers() {
     this.setState({ progress: 7 })
 
-    const { msid, manager, trunk, start, end } = this.state
+    const { msid, manager, trunk } = this.state
     let url = `http://papi.mindsales-crm.com/stats/reject/profiles?token=${msid}`
     if (manager) url += `&manager=${manager}`
     if (trunk) url += `&trunk=${trunk}`
+
+    const { start, end } = this.state.interval
     if (start) url += `&start=${start}`
     if (end) url += `&end=${end}`
 
     axios.get(url)
       .then(({ data: { customers } }) => {
         this.setState({ progress: 100, customers })
-        localStorage.setItem('rejects', JSON.stringify({ customers }))
+        localStorage.setItem('rejectCustomers', JSON.stringify({ customers }))
       })
       .catch(httpError);
   }
@@ -127,7 +129,7 @@ export default class Rejects extends React.Component {
   }
 
   render() {
-    const { customers, show, customer, profile } = this.state
+    const { customers, show, customer, profile, interval } = this.state
     return (
       <div className="bContent">
         <Progress style={{ boxShadow: 'none' }} percent={this.state.progress} color="#D29FCD" height="12" />

@@ -70,10 +70,12 @@ export default class Deals extends React.Component {
   fetchCustomers() {
     this.setState({ progress: 7 })
 
-    const { msid, manager, trunk, start, end } = this.state
+    const { msid, manager, trunk } = this.state
     let url = `http://papi.mindsales-crm.com/stats/deal/profiles?token=${msid}`
     if (manager) url += `&manager=${manager}`
     if (trunk) url += `&trunk=${trunk}`
+
+    const { start, end } = this.state.interval
     if (start) url += `&start=${start}`
     if (end) url += `&end=${end}`
 
