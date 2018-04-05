@@ -72,8 +72,7 @@ export default class BadLeads extends React.Component {
     this.setState({ progress: 7 })
 
     const { msid, manager, trunk } = this.state
-    // let url = `http://papi.mindsales-crm.com/stats/reject/profiles?token=${msid}`
-    let url = `http://localhost:5002/stats/badleads/profiles?token=${msid}`
+    let url = `http://papi.mindsales-crm.com/stats/badleads/profiles?token=${msid}`
     if (manager) url += `&manager=${manager}`
     if (trunk) url += `&trunk=${trunk}`
 
