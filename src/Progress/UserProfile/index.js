@@ -3,19 +3,18 @@ import './styles.css';
 
 import TextWithLabel from './TextWithLabel'
 import CallRecord from './CallRecord'
+import Breadcrumb from './Breadcrumb'
 
 import { Tabs, Tab } from './Tabs'
 
-const Calls = ({ items }) => items && items.length > 0 ?
-    items.map(({ isCallback = false, date, record, duration: { waiting } }) => <CallRecord
-        key={Math.random()}
-        isCallback={isCallback}
-        date={date}
-        record={record}
-        waiting={waiting}
-    />)
+const Breadcrumbs = ({ items }) => items && items.length > 0 ?
+    items.map(b => b.type === 'call' || b.type === 'callback' ?
+        <CallRecord key={Math.random()} {...(b.call)} />
+        :
+        <Breadcrumb key={Math.random()} {...(b)} />
+    )
     :
-    <div>Звонков нет</div>;
+    <div>В истории пусто 👀</div>;
 
 const Profile = ({ items }) => items && items.length > 0 ?
     items.map(({ title, value }) => <TextWithLabel key={Math.random()} title={title} value={value} />)
@@ -37,8 +36,8 @@ export default ({ customer, profile, onClose }) =>
         <TextWithLabel title="Заметка" value={customer.notes} />
 
         <Tabs>
-            <Tab label="Звонки">
-                <Calls items={customer.calls} />
+            <Tab label="История">
+                <Breadcrumbs items={customer.breadcrumbs} />
             </Tab>
             <Tab label="Профиль">
                 <Profile items={profile} />

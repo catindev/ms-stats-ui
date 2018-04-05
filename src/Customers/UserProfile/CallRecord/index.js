@@ -22,8 +22,8 @@ const Audio = ({ record }) =>
 const Missing = ({ waiting }) =>
   <div className="bCallRecord__missing">Пропущенный. Время ожидания {fwaiting(waiting)}</div>;
 
-export default ({ isCallback, date, record, waiting }) =>
+export default ({ isCallback, date, record, duration }) =>
   <div className="bCallRecord">
     <Label isCallback={isCallback} date={date} />
-    {record ? <Audio record={record} /> : <Missing waiting={waiting} />}
+    {record ? <Audio record={record} /> : <Missing waiting={duration.waiting} />}
   </div>;

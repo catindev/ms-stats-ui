@@ -53,6 +53,11 @@ const Reject = asyncComponent(
   { name: 'Reject' },
 )
 
+const BadLeads = asyncComponent(
+  () => import('./Customers/BadLeads').then(module => module.default),
+  { name: 'BadLeads' },
+)
+
 const UsersStats = asyncComponent(
   () => import('./Managers/UsersStats').then(module => module.default),
   { name: 'UsersStats' },
@@ -85,6 +90,7 @@ class App extends Component {
           <Route path="/users-details" component={UsersDetails} />
           <Route path="/customers-deal" component={Deal} />
           <Route path="/customers-reject" component={Reject} />
+          <Route path="/customers-badleads" component={BadLeads} />
           <Route path="/trunks" component={Trunks} />
           <Route path="/calls" component={Calls} />
           <Route path="/funnel" component={Funnel} />

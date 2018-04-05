@@ -23,7 +23,7 @@ const Period = asyncComponent(
   { name: 'Period' },
 )
 
-export default class rejectCustomers extends React.Component {
+export default class BadLeads extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -46,7 +46,7 @@ export default class rejectCustomers extends React.Component {
   }
 
   componentDidMount() {
-    const fromLocalStorage = localStorage.getItem('rejectCustomers')
+    const fromLocalStorage = localStorage.getItem('BadLeadsProfiles')
     if (fromLocalStorage) this.setState(JSON.parse(fromLocalStorage))
     this.setState({ msid: Cookies.get('msid') }, () => this.fetchCustomers())
   }
@@ -73,7 +73,7 @@ export default class rejectCustomers extends React.Component {
 
     const { msid, manager, trunk } = this.state
     // let url = `http://papi.mindsales-crm.com/stats/reject/profiles?token=${msid}`
-    let url = `http://localhost:5002/stats/reject/profiles?token=${msid}`
+    let url = `http://localhost:5002/stats/badleads/profiles?token=${msid}`
     if (manager) url += `&manager=${manager}`
     if (trunk) url += `&trunk=${trunk}`
 
@@ -84,7 +84,7 @@ export default class rejectCustomers extends React.Component {
     axios.get(url)
       .then(({ data: { customers } }) => {
         this.setState({ progress: 100, customers })
-        localStorage.setItem('rejectCustomers', JSON.stringify({ customers }))
+        localStorage.setItem('BadLeadsProfiles', JSON.stringify({ customers }))
       })
       .catch(httpError);
   }
@@ -135,7 +135,7 @@ export default class rejectCustomers extends React.Component {
       <div className="bContent">
         <Progress style={{ boxShadow: 'none' }} percent={this.state.progress} color="#D29FCD" height="12" />
         <h1>
-          Отказы
+          Нецелевые звонки
           <PeriodRadio onChange={this.onPeriodChange} />
         </h1>
         {show === 'period' && <Period onInterval={this.onInterval} />}

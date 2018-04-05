@@ -1,0 +1,43 @@
+.bCustomerBreadcrumb {
+  padding: .5rem 0;
+  padding-bottom: .2rem;
+}
+
+.bCustomerBreadcrumb__divider::after {
+  color: #999;
+  content: "·";
+  font-weight: bold;
+}
+
+.bCustomerBreadcrumb__comment {
+  border: 1px solid #E6E6E7;
+  border-radius: 5px;
+  padding: .55rem .8rem;
+  background-color: #fff;
+  margin-bottom: 10px;
+  font-size: 14px;
+  min-width: 570px;
+  max-width: 570px;
+}
+
+.bCustomerBreadcrumb__label {
+  padding: 5px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.bCustomerBreadcrumb__audio {
+  min-width: 600px;
+  max-width: 600px;
+}
+
+.bCustomerBreadcrumb__missing {
+  font-size: 14px;
+  padding: 8px 10px;
+  vertical-align: middle;
+  font-weight: 400;
+  background: #FFD1C6;
+  min-width: 580px;
+  max-width: 580px;
+  border-radius: 4px;
+}

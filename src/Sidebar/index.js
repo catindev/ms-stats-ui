@@ -53,6 +53,11 @@ export default ({ menu }) =>
           Отказы
         </NavLink>
       </li>
+      <li className="bMainmenu__item">
+        <NavLink to="/customers-badleads" activeClassName="bMainmenu__item--active">
+          Нецелевые звонки 👀 🐣
+        </NavLink>
+      </li>
 
       {/* фичи без раздела */}
       <li className="bMainmenu__title">Маркетинговые данные</li>
